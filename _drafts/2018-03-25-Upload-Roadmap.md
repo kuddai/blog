@@ -17,3 +17,5 @@ Next gen phone/?. Google in your head.
 Nanotech. -> 
 Personal imaging. Store memories.
 ?
+
+Little drawings of these would be cooler?
