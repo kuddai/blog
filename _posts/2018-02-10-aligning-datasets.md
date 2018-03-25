@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Visulaising dataset alignment
+title: Visualising dataset alignment
 ---
 
 The problem is siloed data. For whatever reason, data exists as independent sets. This may be due to a few reasons;

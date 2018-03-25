@@ -1,3 +1,9 @@
+---
+layout: post
+title: Roadmaps to brain uploading
+category: main
+---
+
 Motivation. Need a path, with small (incremental) steps towards mind-uploading. Why?
 
 Need funding. If we can commercialise products along the way, the project can fund itself making it sustainable.
@@ -11,4 +17,3 @@ Next gen phone/?. Google in your head.
 Nanotech. -> 
 Personal imaging. Store memories.
 ?
-

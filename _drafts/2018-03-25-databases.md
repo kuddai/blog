@@ -34,7 +34,7 @@ They are equivalent w.r.t the data we have, need to collect more data, use anoth
 <side>This means $a$ may not imply $b$, but isn't that what we just showed by finding a path from $a\rightarrow b$?</side>
 What if we can use the database to also find a path from $\not a\rightarrow b$? How do we resolve this? Should this sort of behaviour even be allowed?
 
-### Copression for efficient reasoning
+### Incomplete knowledge: Copression for efficient reasoning
 
 What happens when the database is incomplete, or we are reuired to trade-off accuracy for reduced latency, lower computation, ...
 
@@ -53,14 +53,15 @@ How close the nodes visited are to being basis nodes.
 ##### Factored links.
 
 
+##### Exploration
 
+What about exploring new parts of the graph? May still have ???
 
 
 ***
+All result in a type of <u>approximate reasoning</u>???
 
-All result in a type of <u>approximate reasoning</u>.
-
-### Coherence implies completeness?
+### (In)Coherence
 
 Humans tend to have incoherent beliefs. We will reason about why X implies Y and about how Y implies Z, but disagree that X implies Z. (TODO want a beter example)
 
@@ -68,4 +69,4 @@ This is not possible in a relational database (assuming?). But if we consider th
 
 This points at an unsupervised loss for compressing a database? Compress it coherently...
 
-Paper title: Approximate reasoning with incommplete models.
+Paper title: Approximate reasoning with incomplete models.
