@@ -2,6 +2,9 @@
 layout: post
 title: Conserved complexity
 ---
+
+What if there was a measure of complexity that was conserved over the same problem? Solutions must reflect this complexity if they hope to solve the problem efficiently. But since the complexity is conserved, solutions can trade energy for time for memory useage for latency for parallelism for ...
+
 Given a measure of complexity, $\mathcal C$, I want it to satisfy:
 
 <side>But the lower bound is defined according to $\mathcal C$, this seems like a trivial definition?!</side>

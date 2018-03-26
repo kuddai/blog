@@ -4,12 +4,14 @@ title: Automated model building
 category: main
 ---
 
-The models I currently care about;
+The models I currently care about (only the important things);
 
-* of the brain (why? -- another post? [this post]({{site.baseurl}}/)
-* tax (see [this post]({{site.baseurl}}) for some motivation)
+* the universe
+* the brain (why? -- another post? [this post]({{site.baseurl}}/)
+* tax (actually tho, see [this post]({{site.baseurl}}) for some motivation)
 * knowledge/wikipedia (dbpedia)
-* ?
+* logic (already built) -- see Coq or similar
+
 
 all share a similar problem. We want a working model of X so we can test various interventions. A computational model allows us to do this ethically and quickly.
 
