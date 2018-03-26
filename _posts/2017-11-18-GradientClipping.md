@@ -6,16 +6,13 @@ title: Gradient clipping for better generalisation
 > General features are learned first/faster because the intra (and inter) batch examples positively interfere along their shared (aka general) features and negatively interfere along the features specific to one/a subset of the examples.
 
 <side>Need to empirically validate, and possibly prove?</side>
-This property is the result of averaging the gradients of a batch together (really just a property of commutativity!?).
+This property (above) is the result of averaging the gradients of a batch together (really just a property of commutativity!?).
 
 ![pic]({{site.baseurl}}\images/svd-grad.png)
 
-However, there are some problems with just averaging.
+However, there is a problem with just averaging; A single pathological example (maybe a noised label) could arbitrarily skew the direction of the mean.
 
-* A single pathological example (maybe a noised label) could arbitrarily skew the direction of the mean.
-* ?
-
-So, assuming this claim is true, and these problems do exist, the next question in my mind is to ask; Can we learn to generalise better/faster, and/or prevent over fitting, by clipping the weaker directions?
+So, assuming this claim is true, and this problem does exist, the next question in my mind is to ask; Can we learn to generalise better/faster, and/or prevent over fitting, by clipping the weaker directions?
 
 ### Possible solutions
 

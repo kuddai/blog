@@ -27,23 +27,24 @@ Let $M$ be a <u>transitional model</u> that takes a state, $s_t$ to the next sta
 
 ### Multiple paths
 
-People tend to be able to give multiple reasons for why the rain yesterday explains  
+People tend to be able to give multiple reasons for why the rain yesterday explains the prescence of a god. Or why the cute-boy-next-door's actions indicate that he likes you.
+
+<side>The mistake we make is that we easily confuse related concepts, .</side>
+For a minute let us only condsider well defined reasoning. (meaning?)
 
 * What does connectedness imply?
-* What does it mean to be the shortest path? (nothing unless ??? -- depends on basis)
-*
+* What does it mean to be the shortest path? (it depends on the basis)
+* ??
 
 Does having two paths ($p_1, p_2$) from $a\rightarrow b$ imply that $p_1$ is equivalent to $p_2$?
 If we have two models, $m_1$ and $m_2$ that explain (a, b), which one is right?
 
 They are equivalent w.r.t the data we have, need to collect more data, use another measure to compare them, such as the `simplicity` of each model/path.
 
-##### Contradicting paths
-
 <side>This means $a$ may not imply $b$, but isn't that what we just showed by finding a path from $a\rightarrow b$?</side>
 What if we can use the database to find a path from $\neg a\rightarrow b$? How do we resolve this?
 
-This problem is normally not considered in most reasoning systems as we seek to build them so that they are consistent [ref 1](?), [ref 1](2), ... Thus a lot of time has been spent ...?
+This problem, __inconsistency__, is normally not considered in most reasoning systems as we seek to build them so that they are consistent [ref 1](?), [ref 1](2), ... Thus a lot of time has been spent ...?
 Should this sort of behaviour even be allowed? What can it buy us? When is it necessary?
 
 # Approximate reasoning
@@ -53,7 +54,7 @@ Should this sort of behaviour even be allowed? What can it buy us? When is it ne
 <side>TODO Are these really the same? Need to show more rigorously.</side>
 Incomplete database aka approximate reasoning aka imperfect models.
 
-Consider some strategies for reducing the complexity (memory, latency, time, ...) of a reasoning system.
+Consider some strategies for reducing the complexity (memory, latency, time, ...) of a reasoning system that sacrifice ???.
 
 ##### Factoring links into a model
 
