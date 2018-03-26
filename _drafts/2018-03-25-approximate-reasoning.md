@@ -46,6 +46,7 @@ Given a path $a \rightarrow b$, what if we can use the database to find a path f
 This property, __inconsistency__, is normally avoided in most reasoning systems [ref 1](?), [ref 2](2), ... A lot of time has been spent on this problem? _Could go into Godel's theorem. Not sure if is necessary? I am just trying to motivate why inconsistency is bad._
 
 Humans tend to have inconsistent beliefs. We will reason about why X implies Y and about how Y implies Z, but disagree that X implies Z. (TODO want a better example)
+That example. If two people are rational and agree on the prior assumptions/axoims then they cannot disagree. But this requires them to ... Could take too long to make any useful decisions.
 
 What I am curious about is; _can we trade consistency for other measures of efficiency?_
 
@@ -69,9 +70,9 @@ Instead of storing all the links, we could generate them as required. This could
 
 ##### Sketched nodes
 
-<side>Reducable: Inspired by reductionism. Reduce complexity into a small number of atomic units</side>
+<side>Reducible: Inspired by reductionism. Reduce complexity into a small number of atomic units</side>
 Rather than storing all $N$ nodes. Factorise them into a hierarchy of basis nodes and
-Some may not be `reducable` into the basis, so must be memorised, for now.
+Some may not be `reducible` into the basis, so must be memorised, for now.
 Problem is that this hierarchy needs to be
 
 This is a data structure that contains;
