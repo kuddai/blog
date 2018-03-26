@@ -6,7 +6,7 @@ category: main
 
 The models I currently care about;
 
-* of the brain (why? -- another post?)
+* of the brain (why? -- another post? [this post]({{site.baseurl}}/)
 * tax (see [this post]({{site.baseurl}}) for some motivation)
 * knowledge/wikipedia (dbpedia)
 * ?
