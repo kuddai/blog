@@ -25,12 +25,12 @@ Let $M$ be a <u>transitional model</u> that takes a state, $s_t$ to the next sta
 
 ### Consistent model
 
-> What happens if we allow multiple paths between $a$ and $b$?
+> What happens if we have multiple paths between $a$ and $b$?
 
 People tend to be able to give multiple reasons for why the rain yesterday explains the prescence of a god. Or why the cute-boy-next-door's actions indicate that he likes you.
 
 <side>The mistake we make is that we easily confuse related concepts, .</side>
-For a minute let us only condsider well defined reasoning. (meaning?)
+For now, let's only condsider well defined reasoning. (meaning?)
 
 * What does connectedness imply?
 * What does it mean to be the shortest path? (it depends on the basis)
@@ -43,7 +43,7 @@ They are equivalent w.r.t the data we have, need to collect more data, use anoth
 <side>This means $a$ may not imply $b$, but isn't that what we just showed by finding a path from $a\rightarrow b$?</side>
 Given a path $a \rightarrow b$, what if we can use the database to find a path from $\neg a\rightarrow b$? How do we resolve this?
 
-This property, __inconsistency__, is normally avoided in most reasoning systems [ref 1](?), [ref 2](2), ... A lot of time has been spent ...? ... could go into Godel's theorem. not sure if necessary? just trying to motivate why inconsistency is bad.
+This property, __inconsistency__, is normally avoided in most reasoning systems [ref 1](?), [ref 2](2), ... A lot of time has been spent on this problem? _Could go into Godel's theorem. Not sure if is necessary? I am just trying to motivate why inconsistency is bad._
 
 Humans tend to have inconsistent beliefs. We will reason about why X implies Y and about how Y implies Z, but disagree that X implies Z. (TODO want a better example)
 

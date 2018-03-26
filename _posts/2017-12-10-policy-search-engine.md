@@ -5,9 +5,9 @@ title: Policy search engine
 
 Typical smart city solutions seem to focus on gathering __evidence for/of problems__, i.e. measuring built and social environments. This is useful as it can motivate action and change. However, this problematic data does not help us solve the problems once identified. For this we need __evidence for/of solutions__. How have past policies changed cities? Which policies seem to work? Which policy would be most effective/efficient in this case?
 
-These questions are notoriously hard to answer (_because people don't like being experimented on, because experiments take many years, because there are enormous amounts of uncontrolled variables_). Thus the question becomes; what do we need to answer these questions? In the ideal case we would have a dataset relating; all policies ever implemented, and measures of every variable possible (controlled and uncontrolled, social, environmental, ...).
+These questions are notoriously hard to answer (_because people don't like being experimented on, because experiments take many years, because there are enormous amounts of uncontrolled variables_). Thus the question becomes; what do we need to answer these questions? In the ideal case we would have a dataset relating; all policies ever implemented, and measures of every variable possible, controlled and uncontrolled (social, environmental, political, economic, ...).
 
-The Smart Cities are mostly working towards measures of environmental and some social variables. However, the missing piece is a platform that serves queries about past policies.
+Smart City tech is mostly working towards measures of environmental, economic and some social variables. However, the missing piece is a platform that serves queries about past policies.
 
 __Proposal__: build a search engine that indexes local council and national government policies by:
 
@@ -20,10 +20,9 @@ __Proposal__: build a search engine that indexes local council and national gove
 
 I imagine a few use cases (need some help here);
 
-1. You want to reduce the traffic in central city, but are unsure about how to proceed. You know that your most recent intervention in public transport preceded -- by 2 weeks -- a change in public transport usage statistics. (they can already do this...)
-* Browsing past polices for inspiration and soft validation. (You could "test drive" new policy by examining how other cities/governments are trying to solve similar problems.)
-* Meta-analysis. Because you know certain policies correlate with certain outcomes (with a p-value of XX and a sample size of ~100 cities) you can be more confident in applying the policy.
-* Hypothesising about the efficacy of policies via correlation with other data sources.
+1. You want to reduce the traffic in the central city, but are unsure about how to proceed. You have been collecting data on traffic patterns in many cities for years. Using the policy search engine, you can easily find all transport related policies implemented in the cities you have traffic stats on. It turns out that the latest intervention in public transport preceded -- by 2 weeks -- a large increase in public transport use.
+* Browsing past polices for inspiration and soft validation. (You could "test drive" a new policy by examining how other cities/governments are trying to solve similar problems.)
+* Meta-analysis. Because you know certain `similar` policies correlate with certain outcomes (with a p-value of XX and a sample size of ~100 cities) you can be more confident in applying the policy to achieve that outcome.
 
 A proof of concept could be a search engine that serves queries based on location, date and a class of policy domain -- e.g. public transport.
 
