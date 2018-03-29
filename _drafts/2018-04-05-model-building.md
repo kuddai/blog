@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Automated model building
-category: main
 ---
 
 The models I currently care about (only the important things);

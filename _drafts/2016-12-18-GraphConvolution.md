@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Graph convolutional networks
-category: summary
 ---
 
 _This post is based around [Thomas Kipf's paper/post](https://tkipf.github.io/graph-convolutional-networks/#fn2) and ???._

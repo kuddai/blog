@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Axioms of linear algebra
-category: extra
 ---
 
 1. Associativity of addition

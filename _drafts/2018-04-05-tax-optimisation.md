@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Tax optimisation
-category: main
 ---
 
 In NZ there is an anti-avoidance law stating;

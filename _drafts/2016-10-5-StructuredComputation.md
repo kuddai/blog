@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Atomic computation
-category: notes
 ---
 
 __Periodic table__: AND, OR, XOR, ... Hadamard, CNOT,

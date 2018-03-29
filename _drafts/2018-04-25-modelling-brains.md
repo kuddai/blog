@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Building a model of the brain
-category: main
 ---
 
 Why is it important?

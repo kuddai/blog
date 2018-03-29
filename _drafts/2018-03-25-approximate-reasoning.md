@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Approximate reasoning with incomplete models
-category: main
 ---
 
 In some cases we might want to trade-off accuracy for other types of complexity, latency, memory, time, ... What does this trade cost in reasoning systems?

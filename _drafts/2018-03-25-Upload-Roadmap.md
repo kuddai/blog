@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Roadmaps to brain uploading
-category: main
 ---
 
 Motivation. Need a path, with small (incremental) steps towards mind-uploading. Why?
