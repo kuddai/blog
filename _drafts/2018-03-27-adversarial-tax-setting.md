@@ -1,6 +1,6 @@
 ---
 layout: post
-title: An adversarial game with taxes
+title: Tax optimisation as an adversarial game
 ---
 
 I came across a new adversarial setting (at least new to me...) while getting curious about how to apply AI/ML to complete tax law and how to regulate tax optimisation (aka avoidance in my mind, see [this post - TODO](?)).
