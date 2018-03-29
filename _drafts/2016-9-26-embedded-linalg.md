@@ -9,7 +9,7 @@ Others? What about graphics, or ??, or
 
 # Linear operators that can be embedding in LinAlg
 
-Why is this cool? It is a general way to represent things. The power comes from it ability to make different operators by simply changing structure?
+Why is this cool? It is a general way to represent things. The power comes from its ability to make different operators by simply changing structure?
 
 But are these more that just nice mathematical curiosities? Why is this useful or important?
 
