@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Roadmap: Automated science
+title: Roadmap -- automated science
 ---
 
 Math and science have become too big for individuals. We find it hard to keep up and to cram the relevant knowledge into our small heads. We need better tools to continue push the boundaries.
