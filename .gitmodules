@@ -1,0 +1,3 @@
+[submodule "_posts/open-problems"]
+	path = _posts/open-problems
+	url = https://github.com/act65/open-problems.git
