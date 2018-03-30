@@ -65,6 +65,36 @@ for _ in range(iterations):
 ```
 
 TODO. Relationship to reinforcement learning and reward hacking? And some of the safety research?
+https://worldmodels.github.io/
+Overfitting to approximate models, can do well in the virtual world, but poorly in the real world.
+
+```python
+# build an approximate model of the true dynamics
+# aka construct some tax law to match intuition about right/wrong
+for _ in range(iterations):
+
+    o = env.step(a)
+
+    # fit your model of tax law to observations
+    # might not get these very often
+    h = V(o)
+    z_ = M(h, z)
+    o_ = V_(z_)
+    loss = d(o, o_)
+
+# use the virtual/approximate model to
+# learn a policy given some reward fn.
+for _ in range(iterations):
+  o = M.step(a)
+
+  h = V(o)
+  z_ = M(h, z)
+
+  a = C(z_)
+  r = R(z_)  
+  # this issue is avoided in the paper.
+  # how do we know R in the virtual environment?!?
+```
 
 ***
 Questions raised;
