@@ -1,0 +1,123 @@
+---
+layout: post
+title: Evolving scientific models
+---
+
+> Science by first principles.
+
+What is the goal of science? Generate accurate explanations for phenomena we observe. It isnt enough to just fit a model to the observed data, because we almost always do not have access to all of the information and thus we are solvig an underconstrained problem. There are many models that fit the data.
+
+So the question becomes; which model is the best one?
+
+
+Assumption 1: Reducability
+If components of a model can independently explain some of the observed phenomena then the composition of those components makes a likely model.
+Assumption 2: Generality
+
+Assumption 3: Simplicity (is this equivalent to reducability?)
+<!-- Assumption 4: Induction !? -->
+Assumptin 5: Smoothness
+
+***
+
+
+Show that: optimising a reward, in different environments (aka under different constraints/assumptions) various strategies (memory, safe trade, ...) emerge naturally.
+
+Other ways of stating the same thing;
+- Show which environments provide advantages to different strategies when optimising for the same goal.
+- Show what is necessary/sufficient for a certain phenomena to emerge
+
+
+## The method
+
+Heirarchy of explanation
+1. Generative (association. could just fit a fn)
+- Disentanglement and reductionism.
+- Counterfactuals (via ablation) -- can give us necessity (given other assumptions).
+- A single simple fn being optimised.
+- Advantages given by bounds on the complexities of resources.
+
+Questions we want to answer;
+
+- What is the problem being solved by X?
+- And why is X necessary? (comprared to potential alternatives it ...?)
+
+## In practice
+
+Imagine we have a model of the brain. Questions we might like to ask would be;
+
+- how much does assumption A effect the accuracy of our model?
+
+Other possible tools?
+- Use bprop to estimate the effect of parameters/assumptions!?
+- How easily does the phenomena emerge?
+- ablation studies to prove necessity?!?
+
+
+
+## Problems with this approach;
+- a trajectory/generative reward only proves sufficiency.
+- ?
+
+What is necessary to build an explanation?
+Generative. Each part is necessary.
+
+This is just the same as all science? Build a model!?! But the how is the important part.
+- Reduce to simple testable cases.
+- Build up complexity
+- Figure out which assumptions are necessary and cut others. Compress!!
+
+# Examples
+
+I see some similarities in the methodology (I would want to use) to understand cooperation/trading/specialisation and to understand the brains structure.
+
+## Explaining the evolution of XXX
+
+For each arrow we want;
+- proof that the step provides an advantage
+- the step to be possible via a 'smooth' trajectory
+- ?
+
+### The evolution of collaboration
+
+> Reputation -> Money -> Markets.
+
+Repuation (as a signal for estimating trust) doesn't scale well ($n^{\mathcal O(1)}$) with larger numbers of traders. Money ... scales
+
+### The evolution of language
+
+> Planning -> Merge -> Language.
+
+### The evolution of ? (the brain?)
+
+> Learning -> ? -> ?
+
+The main question I would want to answer is; what advantage does X brain structure provide? If we are going to include bounary/goal/time cells, or some alternative neural topology between CA1 and grid cells, what advantage do they provide our agent/organism? Can it learn faster? Can it generalise better? ... etc Does the change help make more babies?
+
+So, what I really want to understand is what needs to be done computationally to solve a problem, aka its complexity, and what structures in the brain are necessary/sufficient.
+
+### The evolution of life
+
+> Membrane potentials -> ? -> ?
+
+Need to re-read the vital question.
+
+## What about other theories?
+
+
+What about if we viewed the evolution of theories of gravity in a similar way?!? Always optimising accuracy.
+
+### Relativity
+
+> Classical mechanics -> Relativity -> ?
+
+First the easily solutions are found and constrained by data.
+- Speed of light is necessary for relativity.
+- ?
+
+
+***
+
+
+- This method also explains the success of natural selection?
+- ?
