@@ -5,7 +5,7 @@ permalink: /about/
 ---
 My name is Alex. I want to be smart(er). Blog posts will range from anything within;
 
-___Brains, learning, languages, control, natural sciences, computation, math ...___
+___Brains, learning, languages, control, scientific method, natural sciences, computation, math, compression, automation, energy, ...___
 
 This place for me to put the things I would like others to see; my notes and ideas about computer science and its applications. For the things I don’t want people to see, check out my other [blog](https://act65com.wordpress.com/). Which is less technical, less polished, more opinionated, and more personal.
 
