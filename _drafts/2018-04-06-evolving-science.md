@@ -118,6 +118,37 @@ First the easily solutions are found and constrained by data.
 
 ***
 
+Not only does a model have to be as simple as possible, but it also needs a simple process by which the model can arise. (is that the same as just having a model that is as simple as possible?)
+
+Many models might fit the data. Only consider "constructible" (aka learnable?) models.
+
+
+Just give the process some names to make things clear.
+$$
+Data \math_op{\rightarrow}_{} Model \math_op{\rightarrow}_{Compression} Axioms \\
+Data \math_op{\leftarrow}_{Generation} Model \math_op{\leftarrow}_{Construction} Axioms \\
+$$
+
+
+```python
+construct: Axioms -> Model
+generate: Model -> Data
+compress: Data -> Model
+formalise: Model -> Axioms
+```
+
+The axioms, given a ???, can construct the model.
+The model, given an init, can generate the data.
+
+Ahh, but when we are searching for the right axioms, we still use the data to constrain the space of models.
+
+How can we formalise?
+Imagine we have a model of particle physics. How can we find the minimal set of assumptions that (approximately) generate our model?
+
+
+
+***
+
 
 - This method also explains the success of natural selection?
-- ?
+- What can inaccurate models tell us? The models half way along the trajectory?
