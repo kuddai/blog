@@ -2,6 +2,18 @@
 layout: post
 title: Evolving scientific models
 ---
+<!--
+The relationship of emergence the scientific process.
+-->
+
+In the past science has made progress by reducing phenomena down to its atomic parts, the irreducible bases that are composed to the given phenomena.
+<!-- Would prefer not to lecture... -->
+Imagine we want to understand {insert reduction example}.
+
+This method works well. But, what about the converse problem. Rather than going from complex phenomena to
+
+<side>Recently this method has been recieving criticism.</side>
+
 
 > Science by first principles.
 
@@ -12,11 +24,12 @@ So the question becomes; which model is the best one?
 
 Assumption 1: Reducability
 If components of a model can independently explain some of the observed phenomena then the composition of those components makes a likely model.
-Assumption 2: Generality
+Assumption 2: Generality (it this different to simplicity? the assumption of an integrated representation of everything)
 
 Assumption 3: Simplicity (is this equivalent to reducability?)
 <!-- Assumption 4: Induction !? -->
 Assumptin 5: Smoothness
+Assumption 6: Necessity implies causality (is that an assumption?!)
 
 ***
 
@@ -28,35 +41,40 @@ Other ways of stating the same thing;
 - Show what is necessary/sufficient for a certain phenomena to emerge
 
 
-## The method
+### What does it mean to understand?
 
-Heirarchy of explanation
+Heirarchy of explanation;
+
 1. Generative (association. could just fit a fn)
-- Disentanglement and reductionism.
-- Counterfactuals (via ablation) -- can give us necessity (given other assumptions).
+- Disentanglement and reductionism. (this `fn` is sufficient to generate Z from X and Z)
+- Counterfactuals (via ablation) -- can give us necessity (given other assumptions). (X is necessary for Z)
+- Advantages given by bounds on the complexities of resources. (why is X necessary for Z?)
 - A single simple fn being optimised.
-- Advantages given by bounds on the complexities of resources.
 
-Questions we want to answer;
+
+Process;
+
+- generate various emergent behaviours.
+- study them and find patterns?
+- ...?
+
+Questions to answer;
 
 - What is the problem being solved by X?
 - And why is X necessary? (comprared to potential alternatives it ...?)
+- What can inaccurate models tell us? The models half way along the trajectory?
 
 ## In practice
 
 Imagine we have a model of the brain. Questions we might like to ask would be;
 
 - how much does assumption A effect the accuracy of our model?
-
-Other possible tools?
-- Use bprop to estimate the effect of parameters/assumptions!?
-- How easily does the phenomena emerge?
-- ablation studies to prove necessity?!?
-
+- ?
 
 
 ## Problems with this approach;
-- a trajectory/generative reward only proves sufficiency.
+
+- a trajectory/generative reward only proves sufficiency (or conditional necessity).
 - ?
 
 What is necessary to build an explanation?
@@ -79,16 +97,19 @@ For each arrow we want;
 - ?
 
 ### The evolution of collaboration
-
 > Reputation -> Money -> Markets.
-
-Repuation (as a signal for estimating trust) doesn't scale well ($n^{\mathcal O(1)}$) with larger numbers of traders. Money ... scales
+<!-- Repuation (as a signal for estimating trust) doesn't scale well ($n^{\mathcal O(1)}$) with larger numbers of traders. Money ... scales -->
 
 ### The evolution of language
-
 > Planning -> Merge -> Language.
 
-### The evolution of ? (the brain?)
+### The evolution of life
+
+> Membrane potentials -> ? -> ?
+
+<!-- Need to re-read the vital question. -->
+
+### The evolution of the brain
 
 > Learning -> ? -> ?
 
@@ -96,11 +117,9 @@ The main question I would want to answer is; what advantage does X brain structu
 
 So, what I really want to understand is what needs to be done computationally to solve a problem, aka its complexity, and what structures in the brain are necessary/sufficient.
 
-### The evolution of life
+### The construction of the brain
 
-> Membrane potentials -> ? -> ?
-
-Need to re-read the vital question.
+Given a value fn (maybe many?), construct a new loss fn tailored to the environment.
 
 ## What about other theories?
 
@@ -145,10 +164,4 @@ Ahh, but when we are searching for the right axioms, we still use the data to co
 How can we formalise?
 Imagine we have a model of particle physics. How can we find the minimal set of assumptions that (approximately) generate our model?
 
-
-
-***
-
-
-- This method also explains the success of natural selection?
-- What can inaccurate models tell us? The models half way along the trajectory?
+Nah, formalisation and compression are really the same thing? Take an explicit construction of something (a dataset or a model) and compress it.
