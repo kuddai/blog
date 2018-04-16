@@ -3,10 +3,9 @@ layout: post
 title: Approximate reasoning with incomplete models
 ---
 
-In some cases we might want to trade-off accuracy for other types of complexity, latency, memory, time, ... What does this trade cost in reasoning systems?
+In some cases we might want to trade-off accuracy for other types of complexity, latency, memory, time, ... Maybe. What does this trade cost in reasoning systems?
 
-<side>TODO Are these really the same? Need to show more rigorously. What type of graph?</side>
-> First let's get our heads around what I mean by models.
+> First let's get our heads around what I mean by reasoning systems.
 
 ##### Knowledge bases
 
@@ -20,9 +19,19 @@ Now, imagine that we form an argument about why $b$ is true, based on the assump
 
 ##### Transitional models
 
-Let $M$ be a <u>transitional model</u> that takes a state, $s_t$ to the next state (possibly given some action, but for now we are just going to assume that is part of the state), $s_{t+1} = M(s_t)$. So a model explains the pair (a, b) if the model can be initialised in state $a$ ($s_0 = a$), and after some finite amounts of timesteps, the state either passes through $b$ or approaches it.
+Let $M$ be a <u>model of state transitions</u> that takes a state, $s_t$ to the next state (possibly given some action, but for now we are just going to assume that is part of the state), $s_{t+1} = M(s_t)$. So a model explains the pair (a, b) if the model can be initialised in state $a$ ($s_0 = a$), and after some finite amounts of timesteps, the state either passes through $b$ or approaches it.
 
-### Consistent model
+<side>TODO Are these really the same? Need to show more rigorously. What type of graph?</side>
+
+<side>These questions were inspired by how people tend to reason inconsistently, and I wondered what advantages inconsistency might give to other types of reasoning system.</side>
+
+Point being, these systems; KB, reasoning, transition are similar in ...!??
+
+# Consistency
+
+</side>When computer scientists say consistent, they really mean coherence, but I will continue ...</side>
+
+TODO Need a definition here
 
 > What happens if we have multiple paths between $a$ and $b$?
 
@@ -42,7 +51,7 @@ They are equivalent w.r.t the data we have, need to collect more data, use anoth
 <side>This means $a$ may not imply $b$, but isn't that what we just showed by finding a path from $a\rightarrow b$?</side>
 Given a path $a \rightarrow b$, what if we can use the database to find a path from $\neg a\rightarrow b$? How do we resolve this?
 
-This property, __inconsistency__, is normally avoided in most reasoning systems [ref 1](?), [ref 2](2), ... A lot of time has been spent on this problem? _Could go into Godel's theorem. Not sure if is necessary? I am just trying to motivate why inconsistency is bad._
+This property, __inconsistency__, is normally avoided in most reasoning systems [ref 1](?), [ref 2](2), ... A lot of time has been spent on this problem?
 
 Humans tend to have inconsistent beliefs. We will reason about why X implies Y and about how Y implies Z, but disagree that X implies Z. (TODO want a better example)
 That example. If two people are rational and agree on the prior assumptions/axoims then they cannot disagree. But this requires them to ... Could take too long to make any useful decisions.
@@ -51,10 +60,10 @@ What I am curious about is; _can we trade consistency for other measures of effi
 
 # Approximate reasoning
 
-> What happens when the database is incomplete, or we are required to trade-off accuracy for reduced latency, lower computation, ...
+> What happens when the database is incomplete, or we are required to trade-off accuracy for reduced latency, lower computation, ...?
 
 <side>TODO Are these really the same? Need to show more rigorously.</side>
-Incomplete database aka approximate reasoning aka imperfect models.
+Incomplete database aka approximate reasoning aka imperfect models. (?)
 
 Consider some strategies for reducing the complexity (memory, latency, time, ...) of a reasoning system.
 
@@ -62,6 +71,8 @@ Consider some strategies for reducing the complexity (memory, latency, time, ...
 
 The trivial, and common, case where we simply have not finished constructing the (rules of the) database.
 Ohh. If we want to be able to adapt the database itself then this problem occurs??
+
+_NOTE. Hold up. It seems like I am claiming that inconsistency is a necessary result of having to use incomplete systems. Aka, incompleteness implies inconsistency._
 
 ##### Factoring links into a model
 
@@ -98,14 +109,41 @@ How close the nodes visited are to being basis nodes.
 
 Factorise the ???. You drink drinks, so we can compress this into a single concept. Drink, which captures the name of the drink (the noun -- node), and the act of drinking (the verb -- edge).
 
-# (In)Coherence / (In)Consistency
+# InConsistency
 
-Now, the real question; (How) did each of these strategies sacrifice consistency for greater efficiency? I would like bounds on them.  
+Now, the real question; (How) did each of these strategies sacrifice consistency for greater efficiency?
 
 __Conjecture__: Inconsistency is a necessary result of attempting to reason with incomplete models.
+
+Define incomplete models.
+
+
+
+<side>Ok, there must be some existing work on this? Non trivial in the cts domain...</side>
+__Definition__: The coherence of a database is defined as the total number of contradictions it makes.
+
+### Counting contradictions
+
+How can we measure the (in)consistency of a reasoning system?
+
+let $C \in [0, 1]$ be the consistency of a system,
+
+But how are these contradictions measured!?
+
+- Contradictions are (just) the prediction errors with respect to the complete system. $\sum d(S(q), S'(q))$. (as complete systems cannot contradict themselves).
+
+How can we count contradictions without requiring the complete system? Explore all paths from $A \rightarrow B$ and $\neg A \rightarrow B$.
+But it depends on the assumptions used!?!?
+
+
+##### Practical uses of Contradictions
 
 * This points at an unsupervised loss for compressing a database? Compress it coherently...
 * Also, any contradictions are good canditates for queries to the oracle.
 
-<side>Ok, there must be some existing work on this? Non trivial in the cts domain...</side>
-__Definition__: The coherence of a database is defined as the total number of contradictions it makes.
+
+### Trade-offs
+
+Assuming we have a measure, $C$, for consistency, then ...
+
+$C = \mathcal O(n)$ when $n$ is the number of nodes in the database.

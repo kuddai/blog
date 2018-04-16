@@ -6,18 +6,15 @@ title: Evolving scientific models
 The relationship of emergence the scientific process.
 -->
 
-In the past science has made progress by reducing phenomena down to its atomic parts, the irreducible bases that are composed to the given phenomena.
-<!-- Would prefer not to lecture... -->
-Imagine we want to understand {insert reduction example}.
+Imagine you want to understand {insert reduction lesson}. An interactive example would be nice!?
 
-This method works well. But, what about the converse problem. Rather than going from complex phenomena to
-
-<side>Recently this method has been recieving criticism.</side>
-
+This method works well. But, what about when the simple bits are deeply entangled aka emergent behaviour, generative effects, ...?
 
 > Science by first principles.
 
 What is the goal of science? Generate accurate explanations for phenomena we observe. It isnt enough to just fit a model to the observed data, because we almost always do not have access to all of the information and thus we are solvig an underconstrained problem. There are many models that fit the data.
+
+[Theoretical Impediments to Machine Learning With Seven Sparks from the Causal Revolution](https://arxiv.org/abs/1801.04016)
 
 So the question becomes; which model is the best one?
 
@@ -25,10 +22,9 @@ So the question becomes; which model is the best one?
 Assumption 1: Reducability
 If components of a model can independently explain some of the observed phenomena then the composition of those components makes a likely model.
 Assumption 2: Generality (it this different to simplicity? the assumption of an integrated representation of everything)
-
 Assumption 3: Simplicity (is this equivalent to reducability?)
 <!-- Assumption 4: Induction !? -->
-Assumptin 5: Smoothness
+Assumptin 5: Smoothness/locality. A series of understandable, basic/atomic, steps taken.
 Assumption 6: Necessity implies causality (is that an assumption?!)
 
 ***
@@ -46,11 +42,10 @@ Other ways of stating the same thing;
 Heirarchy of explanation;
 
 1. Generative (association. could just fit a fn)
-- Disentanglement and reductionism. (this `fn` is sufficient to generate Z from X and Z)
-- Counterfactuals (via ablation) -- can give us necessity (given other assumptions). (X is necessary for Z)
-- Advantages given by bounds on the complexities of resources. (why is X necessary for Z?)
-- A single simple fn being optimised.
-
+2. Disentanglement and reductionism. (this `fn` is sufficient to generate Z from X and Z)
+3. Counterfactuals (via ablation) -- can give us necessity (given other assumptions). (X is necessary for Z)
+4. Advantages given by bounds on the complexities of resources. (why is X necessary for Z?)
+5. A single simple fn being optimised. (aka comression!?)
 
 Process;
 
@@ -144,17 +139,9 @@ Many models might fit the data. Only consider "constructible" (aka learnable?) m
 
 Just give the process some names to make things clear.
 $$
-Data \math_op{\rightarrow}_{} Model \math_op{\rightarrow}_{Compression} Axioms \\
-Data \math_op{\leftarrow}_{Generation} Model \math_op{\leftarrow}_{Construction} Axioms \\
+Data \mathop{\rightarrow}_{Compress} Model \mathop{\rightarrow}_{Formalise} Axioms \\
+Data \mathop{\leftarrow}_{Generate} Model \mathop{\leftarrow}_{Construct} Axioms \\
 $$
-
-
-```python
-construct: Axioms -> Model
-generate: Model -> Data
-compress: Data -> Model
-formalise: Model -> Axioms
-```
 
 The axioms, given a ???, can construct the model.
 The model, given an init, can generate the data.

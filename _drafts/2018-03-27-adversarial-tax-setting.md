@@ -6,37 +6,37 @@ title: Tax optimisation as an adversarial game
 I came across a new adversarial setting (at least new to me...) while getting curious about how to apply AI/ML to complete tax law and how to regulate tax optimisation (aka avoidance in my mind, see [this post - TODO](?)).
 
 TODO Some background.
-NZ uses a GAAR. In practice this means judiciaries end up making the law. Aka, there doesnt exist a set of well-specified laws, so judges must interpret the GAAR (expensive calls to the oracle). The rulings are then used as precedent for the future.
+> NZ uses a GAAR. In practice this means judiciaries end up making the law. Aka, there doesnt exist a set of well-specified laws, so judges must interpret the GAAR (expensive calls to the oracle). The rulings are then used as precedent for the future.
 
 Two parts.
-- Classifying avoidance. (precedent and judges interpretation)
-- Completing tax law. (a formal set of rules)
 
-_(but if we could classify all types of avoidance then tax law would be complete??? kinda? ...)_
+<side>but if we could classify all types of avoidance then tax law would be complete??? kinda? ...</side>
+
+- Completing tax law. (a formal set of rules)
+- <a href="#classifying-tax-avoidance">Classifying avoidance</a>. (precedent and judges interpretation)
 
 # Completing tax law
 
-Current tax law is incomplete, we have an inaccurate approximation of some complete set of tax laws. We use judges to ...?
+Current tax law is incomplete, we have an incomplete approximation of some ideal, complete body of tax laws. We use judges to ...?
 
 ## An adversary
 
-Imagine a game between IRD and a taxpayer
+Imagine a game between IRD and a taxpayer. (from the perspective of IRD)  
 
 <side>What about retrospective application of the law? Need to investigate</side>
-(from the perspective of IRD)  
 
 1. You reveal your move (write and pass some taxation legislation).
-2. Your adversary (a tawpayer) organises its finances to minimise tax paid.
-3. The loss is revealed to the adversary (they avoided $$ of tax). You must choose whether to query an expensive oracle (go to court and get a ruling from the law) to check whether you adversary has made a legal move. If qeried the oracle returns the loss. Otherwise you must use your approximation of the law to estimate the loss.
+2. Your adversary (a taxpayer) organises its finances to minimise tax paid.
+3. The loss is revealed to the adversary (they avoided $$x$ of tax). You recieve no loss unless you choose to query an expensive oracle (judges/court) to check whether your adversary has made a legal move.
 
 (_The loss should really the sum of avoided tax over all iterations? Or not? What difference does this make? Cumulative versus absolute versus differential?_)
 
 What makes this setting hard?
-- __Information asymmetry__. The adversary always gets access to the current loss (they know how much tax they avoided) (with respect to their moves, kinda, the multi-agent setting complicates this). While we don't get any info about the loss unless we query an expensive oracle (judges). (false positives are costly, although not as costly as false negatives. This also needs to be learned.
+- __Information asymmetry__. The adversary always gets access to the current loss (they know how much tax they avoided -- at least with respect to their moves, kinda, the multi-agent setting complicates things). While you don't get any info about the loss unless you query an expensive oracle (judges).
 - __Computation asymmetry__. The adversary needs to find a single strategy to minimise tax (that is also legal). You need to find and subvert all potential strategies to avoid tax.
-- __Memory asymmetry__. In the multiplayer setting (many adversaries), it is easy(er) for each adversary to model and track changes in tax law (maybe they even collaborate...). But it is hard(er) for us to model and track changes to thousands, or more, adversaries (changes in a corporations finances my be indicative of avoidance).
+- __Memory asymmetry__. In the multiplayer setting (many adversaries), it is easy(er) for each adversary to model and track changes in tax law (maybe they even collaborate...). But it is hard(er) for you to model and track changes to thousands, or more, adversaries (changes in a corporations finances my be indicative of avoidance).
 
-_Huh, a property of the minima (wrt to IRDs actions) would be that dLoss/dAdversary would also = 0. It doesnt matter what the adversary does, our loss remains the same, tax cant be avoided (although maybe they could pay more than necessary). Is that because it is a zero-sum game?_
+<side>Huh, a property of the minima (wrt to IRDs actions) would be that dLoss/dAdversary would also = 0. It doesnt matter what the adversary does, our loss remains the same, tax cant be avoided (although maybe they could pay more than necessary). Is that because it is a zero-sum game?</side>
 
 ## Adversarial examples
 

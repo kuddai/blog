@@ -5,14 +5,14 @@ title: Understanding emergence
 
 > How does complexity emerge out of simplicity?
 
-- Given a small code, our genome (on the order of kB), how is such complexity generated?
+- Given a small code, our genome (on the order of mB), how is such complexity generated?
 - Given a simple loss function how it can bootstrap itself to generate specialised experts? ... through meta learning?
 - Why does the humble natural selection algorithm generate the splendid diversity we see around us?
 -
 
 <!--
 Want some pictures here? Maybe some automata/game of life?
-???
+Interactive would be even better!? :)
 -->
 
 
