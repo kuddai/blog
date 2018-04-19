@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Gradient clipping for better generalisation
+title: Gradient diversity and generalisation
 ---
 
 > General features are learned first/faster because the intra (and inter) batch examples positively interfere along their shared (aka general) features and negatively interfere along the features specific to one/a subset of the examples.
