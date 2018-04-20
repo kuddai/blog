@@ -3,23 +3,22 @@ layout: post
 title: Automatic computational complexity
 ---
 
-Can we automatically calculate/estimate/approximate the complexity of various algorithms?
+> Can we automatically bound the complexity of algorithms?
 
-Trivially, yes. We can just time the algorithm, we can track the amount of memory used, ...
-
-But, that requires input from humans.
-Also, it is not efficient.  
+Trivially, yes. We can just time the algorithm, we can track the amount of memory it used, ... But; that requires input from humans, and, it is not efficient. Can we efficiently automate this process?
 
 ## Desiderdata
 
-* Accurate:
+What would automatic computational complexity do and be?
+
+* __Accurate__:
   * Want the lowest upper bound. That might take some work to find!?
-* Understandable:
-  Want the bound to be expressed in an 'intuitive' way.
-* Efficient:
+* __Understandable__:
+  Want the bound to be expressed in an 'intuitive' way (w.r.t inputs and ?).
+* __Efficient__:
   * must be more efficient than just running the program at various `n` (which would be the baseline). Is there any existing work on this?
-  * must have low overhead so it can passively exist in the background
-* General:
+  * must have low overhead so it can passively exist in the background.
+* __General__:
   * works on arbitrary programs
 * ?
 
@@ -50,35 +49,82 @@ def sort_list(length):
 
 ## Computational complexity
 
+Intro/motivation and Worked examples
+
 What is it complexity theorists do?
 Some examples, calculated via proof, and empirically backed up.
-
+Why do we care about computational complexity?
 
 ## Implementation
 
-I imagine it would work similar to how automatic differentiation works. Define a set of basis operations, where each one has its complexity defined (memory, time, parallel, energy, latency, ...). As these basis ops are composed we can propagate these complexities via a chain rule.
+I imagine it would work similar to how automatic differentiation (AD) works: derivatives, chain rule, checkpointing, reverse-mode, segmentation, ?.
 
-#### Efficient reverse-AD
+At a high level, AD works by defining a derivative for every operation. A computational graph of a function can then be transformed into a graph of the derivative of the fn using the defined gradient for each operation and using the sum, product and chain rules ...
 
+I imagine that we could define a set of basis operations, where each one has its complexity defined (memory, time, parallel, energy, latency, ...). As these basis ops are composed we can propagate these complexities via a chain rule.
+
+### Differential computational complexity
+
+We want to know the CC of $f(n)$ for other arbitrary values of $n$.
+For example, want to know how the memory usage changes with different inputs, $\frac{d\; \text{memory}}{d\;\text{inputs}}$.
+
+Knowing $\frac{d\; \text{memory}}{d\;\text{inputs}}$ would allow us to estimate the memory complexity at other n.
+
+***
+Actually, I would be pretty happy with;
+
+$\text{memory} = g_f(p), p = h(\text{inputs})$ (the memory complexity of $f$ as a function of some property $p$ of the inputs, e.g. their size, location, ...).
+
+Or, $\text{memory} = g_f(p), p = h(\text{outputs})$ (the memory complexity of $f$ as a function of some property $p$ of the outputs, e.g. the error, latency, ...).
+
+That seems closer to what we want?
+***
+
+A similar problem occurs in calculus. Want to know other values of $y$ where $y = f(x)$.
+
+So we want to know;
+
+$$
+\begin{align}
+y = f(n) \\
+\frac{d \mathcal R_m}{dn} \tag{change in memory wrt n}\\
+\end{align}
+$$
+
+Two ways to frame!? $f(n)$. Or $f(x)$, where we also have some measure $g(x) = n$ that gives us the complexty of the input. (length, number of bits, ...?)
+
+#### Chain rule
+
+Chain rule takes nested function composition and gives multiplication. This is a property of the linearity of the gradients.
+
+<side>
 AD is efficient because ? (is it? only reverse is - memory - efficient)
 Reverse AD is efficient because ?
+</side>
 
-#### Efficient reverse-AB (automatic bounding)
+Dont have a chain rule because they are not linear?!?
+
+The key is the memoization?!? The reuse of
+
+#### Reverse-AB (automatic bounding)
 
 Question. Does the complexity of one hyperparameters tells us something about others!?
-
 
 Can we come up with some sort of chain rule here?
 The theorem we are after is something like
 
-__Conjecture__: Resource chain rule
+__Conjecture__: These exists a 'chain rule' for resource use.
 
 $$
 \begin{align}
-if \quad z &= g \circ f \\
-\mathcal B_{mem}(g) \circ \mathcal B_{mem}(f) &= \mathcal B_{mem}(g \circ f) \tag{!!!} \\
+\mathcal R &:= \{ \text{Memory}, \text{Time}, ... \} \\
+r \in \mathcal R \\
+if \quad h &= g \circ f\\
+\mathcal B_{r}(g) \circ \mathcal B_{r}(f) &= \mathcal B_{r}(g \circ f) \tag{!!!} \\
 \end{align}
 $$
+
+
 
 Examples
 
@@ -148,7 +194,7 @@ class Square(Operation):
 
   @static_method
     def memory_complexity(self):
-      return lambda n:
+      return len(self.x)  # or lambda n: n
 ```
 
 ## Future work
