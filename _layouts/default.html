@@ -2,6 +2,12 @@
 <html>
   <head>
     <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
+    <meta name="description" content="My blog on computer science and cognitive science. Probably
+    focused on machine learning, computational complexity, brains, neuroscience, languages, ...">
+    <!-- should get the description from the blog post itself!? -->
+
+    <link rel="shortcut icon" href="{{ site.baseurl }}/images/question-mark.png" type="image/png">
+
     {% include meta.html %}
     {% include mathjax.html %}
 

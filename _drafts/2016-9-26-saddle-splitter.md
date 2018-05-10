@@ -3,9 +3,15 @@ layout: post
 title: Saddles, splitting and reparameterisation
 ---
 
-How can we learn complicated, non-convex loss functions? The general idea behind [curriculum learning]() is to gradually learn from loss functions with increasing complexity, while each intermediate loss function is somehow related to your true goal. I like to think about this as a type of [transfer learning]() between the simpler learner (/loss function) to the more complex.
+How can we learn complicated, non-convex loss functions? There seems to be two approaches to gradually building the complexity required;
+- [curriculum learning]() provides loss functions with increasing complexity (while each intermediate loss function is somehow related to your true goal).
+- [boosting]()
+
+Another approach/point of view is a type of [transfer learning]() between the simpler learners (/loss function) to the more complex.
 
 In the image below, we want to learn the deep network, the one on the right labelled $L4$. But the loss function (shown underneath in magenta) is just too complex, so how can we do it? How about transferring some knowledge of the task from simpler learners? (ignore the horizontal lines for now)
+
+<side>Boosting acheives this transfer by reusing the eariler learners and learning functions to fit the residual.</side>
 
 ![pic]({{site.baseurl}}\images/Curriculum.png)
 
@@ -37,11 +43,11 @@ This algorithm is nice because we are increasing complexity only as necessary to
 
 ### Reparameterising linear networks
 
-[Deep learning without poor local minima](https://arxiv.org/abs/1605.07110) has an interesting note at the end of the appendices about the implications w.r.t optimisation of a linear network's ability to be collapsed.
+[Deep learning without poor local minima](https://arxiv.org/abs/1605.07110) has an interesting note buried in its appendices about the implications w.r.t optimisation of a linear network's ability to be collapsed.
 
 $$
 \begin{align}
-y &= f_{W_{1-N}}(x) \\
+y &= f_{W_{1:N}}(x) \\
 &= W_1\dots W_i \dots W_nx \\
 &= Ax \tag{collapse the matrices}\\
 &= f_A(x) \\
@@ -50,7 +56,7 @@ $$
 
 And while it is true that these two networks ($f_{W_{1-N}}, f_A$) can represent the same transformations, linear ones. It is not true that they have the same loss surfaces, see the proof via contradiction below.
 
-<side>Not sold on this proof. It shares a parameter through the layers, which seems like a red herring to the original argument!?</side>
+<side>Not sold on this proof. It shares a parameter through the layers, which seems like a different thing to the original argument!?</side>
 > Consider $f(w) = W_3W_2W_1 = 2w^2 + w^3$, where $W_1 = [w, w ,w]$, $W_2 = [1, 1, w]^T$ and $W_3 = w$. Then, let us collapse the model as $a:= W_3W_2W_1$ and $g(a) = a$. As a result, what $f(w)$ can represent is the same as waht $g(a)$ can represent(i.e. any element in $\mathbb R$) with the same rank restriction. Thus with the same reasoning, we can conclude that every local inimum of f(w) corresponds to a local minimum of $w=0$. However, htis is clearly false, as $f(w)$ is a non-convex function with a local minimum at $w = 0$ that is not a global minimum, while $g(a)$ is linear (convex and concave) without any local minima.
 
 ### Saddle breaking
@@ -60,6 +66,8 @@ The main question (for me) that comes of out this insight is whether reparameter
 $$\mathcal L = \parallel x - ABx\parallel_2^2$$
 
 and we split $B$ into $CD$ such that $B = CD$ then does it help us learn faster? Intuitively, this feels somewhat like the kernel trick, where we can use the extra dimensionality of the reparameterised $CD$ to make our way around saddles or other obstacles in the loss surface.
+
+__ TODO Adding depth versus adding width! What problem do they solve?__
 
 ### Notes
 
