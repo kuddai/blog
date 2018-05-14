@@ -3,12 +3,14 @@ layout: post
 title: Conserved complexity
 ---
 
-What if there was a measure of complexity that was conserved over the same problem? Solutions must reflect this complexity if they hope to solve the problem efficiently. But since the complexity is conserved, solutions can trade energy for time for memory useage for latency for parallelism for ...
+What if there was a measure of complexity that was conserved over optimal solutions to the same problem? I am imagining that there is a fundamental complexity to a problem (such as sorting), and the set of optimal solutions lie in a set that conserves the underlying complexity.
+
+Optimal solutions must reflect this complexity if they hope to solve the problem efficiently. But since the complexity is conserved, solutions can trade energy for time for memory useage for latency for parallelism for ...
 
 Given a measure of complexity, $\mathcal C$, I want it to satisfy:
 
 <side>But the lower bound is defined according to $\mathcal C$, this seems like a trivial definition?!</side>
-__Property 1__: the complexity all algorithms within the lower bound  are equivalent.
+__Property 1__: the complexity of all 'optimal' algorithms within the lower bound are equivalent.
 
 Given a problem (such a 3-SAT), one can imagine many different algorithms that may give a solution. Some might be fast, some might be accurate, some might use a lot of memory...
 
@@ -25,7 +27,7 @@ The main intuition behind this equivalence set is that you can trade memory for 
 * _Can this equivalence set be generalised to approximate algorithms, trading data efficiency for accuracy?_
 
 <side>Via some sort of duality?</side>
-__Property 2__: The measure of complexity for a problem and its solution is the same.
+__Property 2__: The measure of complexity for a problem and an optimal solution is the same.
 
 $s \in S, p \in P, \mathcal C(s) = \mathcal C(p)$.
 

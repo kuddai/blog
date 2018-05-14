@@ -3,21 +3,29 @@ layout: post
 title: Representations in linear algebra
 ---
 
-Linear algebra is a powerful language that can embed other more interesting languages/systems/grammars/algebras...? For example, logic/computation, dual numbers, holographic representations, ???
-Others? What about graphics, or ??, or
+Linear algebra and arrays combine to give us a powerful language/representation. Lets explore its power by using linear algebra to represent other interesting languages/systems/grammars/algebras...
+
+<!-- For example, logic/computation, dual numbers, holographic representations, ???
+Others? What about graphics, or ??, or -->
 
 ## Embedded linear operators
 
-Why is this cool? It is a general way to represent things. The power comes from its ability to make different operators by simply changing structure?
+One of the cool things about linear algebra is that linear functions can be written as arrays. This representational duality between operator and operand is rather elegant.
 
-But are these more that just nice mathematical curiosities? Why is this useful or important?
+<!-- But are these more that just nice mathematical curiosities? Why is this useful or important? -->
 
 ### Polynomials
 ##### The differentiation operator
 
-If we consider $a \in \mathcal P$ (the space of polynomials). Where $a_i$ represents $a_i \cdot x^i$. Thus $[0, 5, 3, 0, 1, \dots]^T$ represents $0\cdot x^0 + 5\cdot x^1 + 3\cdot x^2 + 0\cdot x^3 + 1\cdot x^4 = x^4 + 3\cdot x^2 + 5\cdot x$.
+If we consider $a \in \mathcal P$ (the space of polynomials). Where $a_i$ represents $a_i \cdot x^i$. Thus $[0, 5, 3, 0, 1, \dots]^T$ represents
 
-Problem (we need infinite matrices for this to work out...)
+$$
+0\cdot x^0 + 5\cdot x^1 + 3\cdot x^2 + 0\cdot x^3 + 1\cdot x^4 \\
+= x^4 + 3\cdot x^2 + 5\cdot x
+$$
+
+So we can define a differentiation operator, $D$. This works because differentiation is a linear function!
+<side>Problem (we need infinite matrices for this to work out...)</side>
 
 $$
 \begin{align*}
@@ -31,7 +39,7 @@ D &= \begin{bmatrix}
 \end{align*}
 $$
 
-each column is the derivative of a 'basis' function, which in this case is each $x^n$.
+each column is the derivative of a 'basis' function, which in this case is each $x^n$. Now, lets test it out.
 
 $$
 \begin{align}
@@ -54,6 +62,8 @@ $$
 
 - __Q__ Are there other functions that yield a nice representation of the derivative operator?
 - __Q__ What about multi-variable differentiation?
+
+- Homework. What is the derivative of a derivative, $D \cdot D$? Does it make sense?
 
 #### Integral (of polynomials)
 
