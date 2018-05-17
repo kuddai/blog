@@ -3,19 +3,21 @@ layout: post
 title: Approximate reasoning with incomplete models
 ---
 
-In some cases we might want to trade-off accuracy for other types of complexity, latency, memory, time, ... Maybe. What does this trade cost in reasoning systems?
+In some cases we might want to trade-off accuracy for other types of complexity, latency, memory, time, ... Maybe. What does this trade cost in (approximate) reasoning systems?
+
+<side>These questions were inspired by how people tend to reason inconsistently, and I wondered what advantages inconsistency might give</side>
 
 > First let's get our heads around what I mean by reasoning systems.
 
 ##### Knowledge bases
 
-Let $K$ be a <u>relational knowledge base</u>, represented as a graph, $G(v, e)$. Now, imagine we want to get from $a\rightarrow b$ ($a,b \in V$). We need to find a path (a series of edges in, $e \in E$) that connect $a$ and $b$.
+Let $K$ be a <u>relational knowledge base</u>, represented as a graph, $G(v, e)$. Now, imagine we want to get from $a\rightarrow b$ such that ($a,b \in V$). We need to find a path (a series of edges in, $e \in E$) that connect $a$ and $b$.
 
 ##### Arguments
 
 Let $C$ be a set of concepts, and $R$ be a set of reasons that allow you to get from one concept to another, $r(x) = y: r\in R, x,y \in C$.
 
-Now, imagine that we form an argument about why $b$ is true, based on the assumption of $a$. An argument is a chain of reason, $r \in R$, such that they take
+Now, imagine that we form an argument about why $b$ is true, based on the assumption of $a$. An argument is a chain of reason, $r \in R$, such that they connect $a, b$.
 
 ##### Transitional models
 
@@ -23,13 +25,18 @@ Let $M$ be a <u>model of state transitions</u> that takes a state, $s_t$ to the 
 
 <side>TODO Are these really the same? Need to show more rigorously. What type of graph?</side>
 
-<side>These questions were inspired by how people tend to reason inconsistently, and I wondered what advantages inconsistency might give to other types of reasoning system.</side>
 
-Point being, these systems; KB, reasoning, transition are similar in ...!??
+## [Completeness](https://en.wikipedia.org/wiki/Completeness_(logic))
 
-# Consistency
+> The most simple example of a proof system that is sound but not complete would be the one that has no inference rules at all!
+It proves nothing except whichever non-logical axioms your theory has, so in particular it doesn't prove anything that risks being false -- so it is sound. But it is very much not complete. [Makholm](https://math.stackexchange.com/questions/2256054/what-would-be-an-example-of-a-proof-system-being-sound-but-not-complete)
 
-</side>When computer scientists say consistent, they really mean coherence, but I will continue ...</side>
+For example we have a knowledgebase where father/mother/child...?
+Or ...
+
+## [Consistency](https://en.wikipedia.org/wiki/Consistency)
+
+<side>When computer scientists say consistent, they really mean coherence, but I will continue ...</side>
 
 TODO Need a definition here
 
@@ -53,14 +60,27 @@ Given a path $a \rightarrow b$, what if we can use the database to find a path f
 
 This property, __inconsistency__, is normally avoided in most reasoning systems [ref 1](?), [ref 2](2), ... A lot of time has been spent on this problem?
 
+$$
+\text{example of an inconsistent system} \\
+a \rightarrow x \\
+x \rightarrow c \\
+a \rightarrow y \\
+y \rightarrow \neg c \\
+$$
+
+How is this related to many-to-one versus one-to-many functions?
+- a + b = 3 and a + b = 4 are inconsistent (there are no values of a, b that satisfy these equations. so inconsistency is equivalent to satisfiability?)
+- but 4 + a = b and
+
 Humans tend to have inconsistent beliefs. We will reason about why X implies Y and about how Y implies Z, but disagree that X implies Z. (TODO want a better example)
 That example. If two people are rational and agree on the prior assumptions/axoims then they cannot disagree. But this requires them to ... Could take too long to make any useful decisions.
 
 What I am curious about is; _can we trade consistency for other measures of efficiency?_
 
+
 # Approximate reasoning
 
-> What happens when the database is incomplete, or we are required to trade-off accuracy for reduced latency, lower computation, ...?
+> What happens when the database is incomplete, our model is approximate, our argument is i natural language, ... We are required to trade-off accuracy for reduced latency, lower computation, ...?
 
 <side>TODO Are these really the same? Need to show more rigorously.</side>
 Incomplete database aka approximate reasoning aka imperfect models. (?)
@@ -72,11 +92,15 @@ Consider some strategies for reducing the complexity (memory, latency, time, ...
 The trivial, and common, case where we simply have not finished constructing the (rules of the) database.
 Ohh. If we want to be able to adapt the database itself then this problem occurs??
 
-_NOTE. Hold up. It seems like I am claiming that inconsistency is a necessary result of having to use incomplete systems. Aka, incompleteness implies inconsistency._
+__NOTE__. _Hold up. It seems like I am claiming that inconsistency is a necessary result of incomplete systems. Aka, incompleteness implies inconsistency. Yep, but I mean a different type of completeness. Maybe not?_
+
+No the problem only occurs when we have an incomplete database and attempt to use it beyond what it can prove. When we generalise/infer a completion.
 
 ##### Factoring links into a model
 
 Instead of storing all the links, we could generate them as required. This could cut down the memory requirements of large databases. The problem being that the number of links/edges scales with $\mathcal O (\mid V \mid^2)$. So if we have a thousand nodes, the maximum number of edges is a million (if we are talking about an undirected graph).
+
+So instead of representing links as an array that we index $L[i, j]$, we could represent the links as a function $f(i, j)$ that generalises any patterns found in the links.
 
 ##### Sketched nodes
 
@@ -108,6 +132,8 @@ How close the nodes visited are to being basis nodes.
 ##### Node-edge duality
 
 Factorise the ???. You drink drinks, so we can compress this into a single concept. Drink, which captures the name of the drink (the noun -- node), and the act of drinking (the verb -- edge).
+
+__TODO__ Need a toy model that is incomplete (aka approximate) and then ...
 
 # InConsistency
 
