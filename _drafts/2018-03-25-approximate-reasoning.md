@@ -3,11 +3,20 @@ layout: post
 title: Approximate reasoning with incomplete models
 ---
 
-In some cases we might want to trade-off accuracy for other types of complexity, latency, memory, time, ... Maybe. What does this trade cost in (approximate) reasoning systems?
+In some cases we might want to trade-off accuracy for other types of complexity; latency, memory, time, ... What does this trade cost in (approximate) reasoning systems?
 
-<side>These questions were inspired by how people tend to reason inconsistently, and I wondered what advantages inconsistency might give</side>
+<side>These questions were inspired by how people tend to reason inconsistently, and I wondered what advantages our inconsistency might give</side>
 
-> First let's get our heads around what I mean by reasoning systems.
+> First let's get our heads around what I mean by reasoning.
+
+# Reasoning
+
+In the most abstract sense, I define reasoning as finding a path through a graph.
+
+- _Algebraically manipulating previously acquired knowledge in order to answer a new question_ [Bottou 2011](?)
+- _Using a formal system to derive consequents from antecedents_
+- ?
+
 
 ##### Knowledge bases
 
@@ -25,14 +34,24 @@ Let $M$ be a <u>model of state transitions</u> that takes a state, $s_t$ to the 
 
 <side>TODO Are these really the same? Need to show more rigorously. What type of graph?</side>
 
+<!-- For example AlphaGo. -->
 
 ## [Completeness](https://en.wikipedia.org/wiki/Completeness_(logic))
 
-> The most simple example of a proof system that is sound but not complete would be the one that has no inference rules at all!
-It proves nothing except whichever non-logical axioms your theory has, so in particular it doesn't prove anything that risks being false -- so it is sound. But it is very much not complete. [Makholm](https://math.stackexchange.com/questions/2256054/what-would-be-an-example-of-a-proof-system-being-sound-but-not-complete)
+> The most simple example of a proof system that is sound (aka consistent) but not complete would be the one that has no inference rules at all! It proves nothing except whichever non-logical axioms your theory has, so in particular it doesn't prove anything that risks being false -- so it is sound. But it is very much not complete. [Makholm on SE](https://math.stackexchange.com/questions/2256054/what-would-be-an-example-of-a-proof-system-being-sound-but-not-complete)
 
 For example we have a knowledgebase where father/mother/child...?
 Or ...
+
+```python
+Mary = true
+Jasmine = true
+Katsumoto = true
+
+# not included
+# true/false = is_mother(Mary, Katsumoto)  # meaning: is Mary Katsumoto's mother?
+```
+
 
 ## [Consistency](https://en.wikipedia.org/wiki/Consistency)
 
@@ -78,27 +97,47 @@ That example. If two people are rational and agree on the prior assumptions/axoi
 What I am curious about is; _can we trade consistency for other measures of efficiency?_
 
 
-# Approximate reasoning
+## Approximate reasoning
 
-> What happens when the database is incomplete, our model is approximate, our argument is i natural language, ... We are required to trade-off accuracy for reduced latency, lower computation, ...?
+> __Q:__ What happens when the database is incomplete, our model is approximate, our argument is i natural language, ... We are required to trade-off accuracy for reduced latency, lower computation, ...?
 
 <side>TODO Are these really the same? Need to show more rigorously.</side>
 Incomplete database aka approximate reasoning aka imperfect models. (?)
 
+
+### Motivating example
+<!-- Incomplete -> inconsistent -->
+
+The trivial case where we simply have not finished constructing the (rules of the) database.
+
+So, inconsistency is a necessary result of attempting to use incomplete logic beyond what is logically provable. (When we generalise/infer a completion.)
+Aka, incompleteness implies inconsistency.
+
+__TODO__ need a minimal example showing incompleteness -> inconsistency.
+Will need to design a heuristic that 'collides' with itself!?
+<!-- (is this what generative effects are in category theory!?) -->
+
+```python
+Mary = true
+Jasmine = true
+Katsumoto = true
+
+# not included
+# true/false = is_mother(Mary, Katsumoto)  # meaning: is Mary Katsumoto's mother?
+```
+
+***
+
 Consider some strategies for reducing the complexity (memory, latency, time, ...) of a reasoning system.
+Some examples of instances where we might encounter/want incomplete models.
 
-##### Incomplete
+##### Online learning
 
-The trivial, and common, case where we simply have not finished constructing the (rules of the) database.
-Ohh. If we want to be able to adapt the database itself then this problem occurs??
-
-__NOTE__. _Hold up. It seems like I am claiming that inconsistency is a necessary result of incomplete systems. Aka, incompleteness implies inconsistency. Yep, but I mean a different type of completeness. Maybe not?_
-
-No the problem only occurs when we have an incomplete database and attempt to use it beyond what it can prove. When we generalise/infer a completion.
+Need to make predictions before a model has been learned. Maybe the model is too large to every be learned, ...
 
 ##### Factoring links into a model
 
-Instead of storing all the links, we could generate them as required. This could cut down the memory requirements of large databases. The problem being that the number of links/edges scales with $\mathcal O (\mid V \mid^2)$. So if we have a thousand nodes, the maximum number of edges is a million (if we are talking about an undirected graph).
+Instead of storing all the links, we could generate them as required. This could cut down the memory requirements of large databases. The problem being that the number of possible links/edges scales with $\mathcal O (\mid V \mid^2)$. So if we have a thousand nodes, the maximum number of edges is a million (if we are talking about an undirected graph with a single edge type).
 
 So instead of representing links as an array that we index $L[i, j]$, we could represent the links as a function $f(i, j)$ that generalises any patterns found in the links.
 
@@ -135,7 +174,7 @@ Factorise the ???. You drink drinks, so we can compress this into a single conce
 
 __TODO__ Need a toy model that is incomplete (aka approximate) and then ...
 
-# InConsistency
+## The advantages of inconsistency
 
 Now, the real question; (How) did each of these strategies sacrifice consistency for greater efficiency?
 
