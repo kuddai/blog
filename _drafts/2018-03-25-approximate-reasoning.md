@@ -11,10 +11,10 @@ In some cases we might want to trade-off accuracy for other types of complexity;
 
 # Reasoning
 
-In the most abstract sense, I define reasoning as finding a path through a graph.
+In the most abstract sense, I define reasoning as finding a path through a graph, from priors to posteriors, from ...?
 
 - _Algebraically manipulating previously acquired knowledge in order to answer a new question_ [Bottou 2011](?)
-- _Using a formal system to derive consequents from antecedents_
+- _Using a formal system to derive consequents from antecedents (ways of doing this are; deduction, induction, abduction)_
 - ?
 
 
@@ -38,7 +38,7 @@ Let $M$ be a <u>model of state transitions</u> that takes a state, $s_t$ to the 
 
 ## [Completeness](https://en.wikipedia.org/wiki/Completeness_(logic))
 
-> The most simple example of a proof system that is sound (aka consistent) but not complete would be the one that has no inference rules at all! It proves nothing except whichever non-logical axioms your theory has, so in particular it doesn't prove anything that risks being false -- so it is sound. But it is very much not complete. [Makholm on SE](https://math.stackexchange.com/questions/2256054/what-would-be-an-example-of-a-proof-system-being-sound-but-not-complete)
+> The most simple example of a proof system that is {consistent} but not complete would be the one that has no inference rules at all! It proves nothing except whichever non-logical axioms your theory has, so in particular it doesn't prove anything that risks being false -- so it is {consistent}. But it is very much not complete. [Makholm on SE](https://math.stackexchange.com/questions/2256054/what-would-be-an-example-of-a-proof-system-being-sound-but-not-complete)
 
 For example we have a knowledgebase where father/mother/child...?
 Or ...
@@ -51,6 +51,7 @@ Katsumoto = true
 # not included
 # true/false = is_mother(Mary, Katsumoto)  # meaning: is Mary Katsumoto's mother?
 ```
+
 
 
 ## [Consistency](https://en.wikipedia.org/wiki/Consistency)
@@ -104,8 +105,22 @@ What I am curious about is; _can we trade consistency for other measures of effi
 <side>TODO Are these really the same? Need to show more rigorously.</side>
 Incomplete database aka approximate reasoning aka imperfect models. (?)
 
+### Incompleteness implies inconsistency
 
-### Motivating example
+$$
+\begin{align}
+S &\Rightarrow \neg \text{Complete} \\
+S &\Rightarrow S' \tag{via addition of new rules} \\
+S' &\Rightarrow \neg \text{Consistent} \\
+\end{align}
+$$
+
+* __Q__ What must be added to $S$ for $S'$ to be inconsistent?
+* __Q__ When does incompleteness imply inconsistency?
+* Can this still occur if S in complete (but then we wouldnt care about adding to it...)
+* ?
+
+### Motivating examples
 <!-- Incomplete -> inconsistent -->
 
 The trivial case where we simply have not finished constructing the (rules of the) database.
@@ -113,20 +128,49 @@ The trivial case where we simply have not finished constructing the (rules of th
 So, inconsistency is a necessary result of attempting to use incomplete logic beyond what is logically provable. (When we generalise/infer a completion.)
 Aka, incompleteness implies inconsistency.
 
-__TODO__ need a minimal example showing incompleteness -> inconsistency.
-Will need to design a heuristic that 'collides' with itself!?
 <!-- (is this what generative effects are in category theory!?) -->
 
-```python
-Mary = true
-Jasmine = true
-Katsumoto = true
+Examples via uniqueness, ...?
 
-# not included
-# true/false = is_mother(Mary, Katsumoto)  # meaning: is Mary Katsumoto's mother?
+#### My mum?
+
+Want to complete the familial relations, but dont have enough data. Use a heuristic to complete the relationships. `is_mother ~= same_hair_color AND is_older AND is_female`
+
+```python
+1 = n_mothers(Person)  # (or 0 if undefined!?)
+
+Mary  (black, 45, Y)
+Katsumoto (black, 21, N)
+Eluid (brown, 47, N)
+
+Roja (brown, 25, Y)
+Rahul (blond, 24, N)
+
+Jacinda (black, 12, Y)
 ```
 
-***
+- without the `is_female`. We can show that Katsumoto has two mothers (Mary and Eluid).
+- without the `is_older`. We can show that Katsumoto has two mothers (Mary and Jacinda).
+- without the `same_hair_color`. We can show that Katsumoto has two mothers (Mary and Roja).
+
+The point is, if your heuristic does not capture the target function then it can lead to contradictions. The `same_hair_color AND is_older AND is_female` is not unique and thus collides with the `1 = n_mothers(Person)` constraint.
+
+#### ???
+
+```python
+Humans (A)
+Humans burn petrochemicals. (A -> B)
+Petrochemicals cause climate change. (B -> C)
+Humans invent solar power (A -> D)
+Solar power mitigates climate change (D -> not C)
+
+A -> C, A -> not C
+```
+
+What is the problem here? What is wrong with this reasoning? The links just are not true!?
+There is no assignment of truth values to A, B, C, D that satisfy this series of equations.
+
+### Efficient reasoning strategies
 
 Consider some strategies for reducing the complexity (memory, latency, time, ...) of a reasoning system.
 Some examples of instances where we might encounter/want incomplete models.
@@ -212,3 +256,15 @@ But it depends on the assumptions used!?!?
 Assuming we have a measure, $C$, for consistency, then ...
 
 $C = \mathcal O(n)$ when $n$ is the number of nodes in the database.
+
+
+## Resources
+
+* [Inconsistency](https://plato.stanford.edu/entries/mathematics-inconsistent/)
+* [Proving anything with inconsistency](https://math.stackexchange.com/questions/30437/why-in-an-inconsistent-axiom-system-every-statement-is-true-for-dummies)
+* [Paraconsistent logic](https://en.wikipedia.org/wiki/Paraconsistent_logic)
+* [Forcing](https://en.wikipedia.org/wiki/Forcing_%28mathematics%29)
+* https://math.stackexchange.com/questions/105575/what-is-the-difference-between-completeness-and-soundness-in-first-order-logic
+* [Propositional calculus](https://en.wikipedia.org/wiki/Propositional_calculus)
+* [Soundness](https://en.wikipedia.org/wiki/Soundness)
+* [First order logic](https://en.wikipedia.org/wiki/First-order_logic)

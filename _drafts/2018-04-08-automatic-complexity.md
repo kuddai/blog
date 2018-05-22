@@ -3,11 +3,19 @@ layout: post
 title: Automatic computational complexity
 ---
 
+__TODO__ Need to understand AD better.
+
 > Can we automatically bound the complexity of algorithms?
 
 Trivially, yes. We can just time the algorithm, we can track the amount of memory it used, ... But; that requires input from humans, and, it is not efficient. Can we efficiently automate this process?
 
+Want to make it symbolic!!
+
 ## Desiderdata
+
+Knowing the absolute time and memory usage of an algorithm is nice [memory profiler](https://pypi.org/project/memory_profiler/). But what I am really interested in is how do these resources scale.
+Want a model of the computation so we can ask counterfactual queries. What if I had twice as much data/memory/...?
+
 
 What would automatic computational complexity do and be?
 
@@ -21,6 +29,9 @@ What would automatic computational complexity do and be?
 * __General__:
   * works on arbitrary programs
 * ?
+
+__TODO__ maybe python is the wrong language to work with? we have abstracted away from the basis calls. Memory indexes, processes, ...
+__TODO__ problem is how different compilers deal with operations... But that is why we are dealing with bounds!?
 
 ```python
 import bound
