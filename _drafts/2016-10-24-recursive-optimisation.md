@@ -3,7 +3,7 @@ layout: post
 title: Recursive optimisation
 ---
 
-Imagine you have a parameterised optimisation function (e.g. SGD) which you use to find good minima of other parameterised functions, e.g. neural networks.
+Imagine you have a optimisation function which you use to find good minima of other functions.
 
 I want to know the best way to optimise a given (type of) function, e.g. CNNs. How can I do this? Optimise the optimiser?
 

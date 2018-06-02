@@ -10,6 +10,8 @@
 @import "highlights";
 @import "svg-icons";
 
+
+
 /**************/
 /* BASE RULES */
 /**************/
@@ -324,4 +326,26 @@ nav {
 footer {
   padding: 20px 0;
   text-align: center;
+}
+
+// Mouse hover image popup
+
+#mouseOver {
+    display: inline;
+    position: relative;
+}
+
+#mouseOver img {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 1em;
+    opacity: 0;
+    pointer-events: none;
+    transition-duration: 800ms;
+}
+
+#mouseOver:hover img {
+    opacity: 0.5;
+    transition-duration: 400ms;
 }
