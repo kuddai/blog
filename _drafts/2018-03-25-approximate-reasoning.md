@@ -54,7 +54,7 @@ What I am curious about is; _can we trade consistency for other measures of effi
 > What happens when the database is incomplete, or we are required to trade-off accuracy for reduced latency, lower computation, ...
 
 <side>TODO Are these really the same? Need to show more rigorously.</side>
-Incomplete database aka approximate reasoning aka imperfect models.
+Incomplete database aka approximate reasoning aka reasoning with an imperfect model.
 
 Consider some strategies for reducing the complexity (memory, latency, time, ...) of a reasoning system.
 
@@ -107,5 +107,32 @@ __Conjecture__: Inconsistency is a necessary result of attempting to reason with
 * This points at an unsupervised loss for compressing a database? Compress it coherently...
 * Also, any contradictions are good canditates for queries to the oracle.
 
+### A measure of consistency
+
 <side>Ok, there must be some existing work on this? Non trivial in the cts domain...</side>
 __Definition__: The coherence of a database is defined as the total number of contradictions it makes.
+
+
+Desiderdata;
+
+* If $A \rightarrow B$ then $\neg A \not \rightarrow B$ (aka a one to one mapping?)
+* The a measure of consistency would give large values for
+
+
+<side>How is this related to disentanglement?</side>
+Let $h$ be some hidden space, and $D(h) = x$ be some decoder.
+
+$$
+C: D \rightarrow \mathbb R \\
+c_i = \mathbb E_{z \sim \mathcal N} \parallel D(h_{i=1}+z)- D(h_{i=-1}+z) \parallel \\
+C = ... \\
+$$
+
+Aka, $h_i$'s effect on  doesnt
+
+
+So, we would want to maximise this?
+
+$$
+\mathop{argmax}_{\theta} \mathcal C(D_{\theta})
+$$
