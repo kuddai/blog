@@ -44,6 +44,7 @@ This regulariser is sparse because the are $n$ disctinct local minima. The minim
 - if the dynamics diverge!? then just use a random distance...
 - not sure dot product is the right measure of similarity. want the distance along the manifold, with some notion of the vector field!?
 - $V_{minima}$ could be REALLY large. even for a minima that is a line we have an infinite set...
+-
 
 
 ## Intuition.
@@ -90,6 +91,16 @@ The 'dynamical system' will converge to the closest (? depends on relative stren
 
 So the fixed points of the dynamical system are the $k$ eigenvectors of $W$. Giving us our sparse basis.
 
+##### Relationship to the graph fourier transform
+
+$$
+\begin{align}
+L &= D-W \\
+L &= U\Lambda V^T \\
+v &= U \cdot x \\
+\end{align}
+$$
+
 ### Non-linear dynamics
 
 Now. Want to generalise to a non-linear model, e.g. the dynamics of the human body.
@@ -106,3 +117,8 @@ H(t) &= f_{dynamics}(t) \\
 v^* &= \mathop{\text{min}}_v H(t) \\
 \end{align}
 $$
+
+
+## Resources
+
+- [The Emerging Field of Signal Processing on Graphs](https://arxiv.org/abs/1211.0053)
