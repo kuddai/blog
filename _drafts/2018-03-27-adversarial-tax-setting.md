@@ -5,8 +5,9 @@ title: Tax optimisation as an adversarial game
 
 I came across a new adversarial setting (at least new to me...) while getting curious about how to apply AI/ML to complete tax law and how to regulate tax optimisation (aka avoidance in my mind, see [this post - TODO](?)).
 
-TODO Some background.
-> NZ uses a GAAR. In practice this means judiciaries end up making the law. Aka, there doesnt exist a set of well-specified laws, so judges must interpret the GAAR (expensive calls to the oracle). The rulings are then used as precedent for the future.
+Some background:
+
+> NZ uses a General Anti-Avoidance Rule (GAAR). In practice this means judiciaries end up making the law. Aka, there doesnt exist a set of well-specified laws, so judges must interpret the GAAR (expensive calls to the oracle). The rulings are then used as precedent for the future.
 
 Two parts.
 
@@ -17,17 +18,17 @@ Two parts.
 
 # Completing tax law
 
-Current tax law is incomplete, we have an incomplete approximation of some ideal, complete body of tax laws. We use judges to ...?
+Current tax law is incomplete, we have an incomplete approximation of some ideal, complete body of tax laws. We use queries to judiciaries to ...
 
 ## An adversary
 
-Imagine a game between IRD and a taxpayer. (from the perspective of IRD)  
+Imagine a game between IRD and a taxpayer (from the perspective of IRD)  
 
 <side>What about retrospective application of the law? Need to investigate</side>
 
-1. You reveal your move (write and pass some taxation legislation).
-2. Your adversary (a taxpayer) organises its finances to minimise tax paid.
-3. The loss is revealed to the adversary (they avoided $$x$ of tax). You recieve no loss unless you choose to query an expensive oracle (judges/court) to check whether your adversary has made a legal move.
+1. You reveal your move (write and pass some tax legislation).
+2. Your adversary (a taxpayer) organises its finances to minimise tax paid (legally or not, that is a question for another day, tomorrow).
+3. The loss is revealed to the adversary (they avoided $x$ dollars of tax). You recieve no loss unless you choose to query an expensive oracle (judges/court) to check whether your adversary has made a legal move.
 
 (_The loss should really the sum of avoided tax over all iterations? Or not? What difference does this make? Cumulative versus absolute versus differential?_)
 

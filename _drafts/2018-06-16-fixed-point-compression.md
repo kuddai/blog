@@ -122,3 +122,6 @@ $$
 ## Resources
 
 - [The Emerging Field of Signal Processing on Graphs](https://arxiv.org/abs/1211.0053)
+- [Equilibrium propagation]()
+- [Hopfield networks]()
+- [Dynamical systems]()
