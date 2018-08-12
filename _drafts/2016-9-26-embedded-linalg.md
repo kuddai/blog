@@ -312,6 +312,10 @@ $$
 
 !?? Can represent graphs in linalg.
 
+Other
+
+* Seripinski triangle
+
 # Thoughts
 
 - Why is linear algebra such an effective language for thinking about and expressing structure in systems?
