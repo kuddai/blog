@@ -3,11 +3,7 @@ layout: post
 title: Unsupervised skip connections
 ---
 
-[Ladder nets](https://arxiv.org/abs/1507.02672) (aka [Unets](https://arxiv.org/abs/1505.04597)) are currently achieving state-of-the art results on image to image translation, for example [see here](https://phillipi.github.io/pix2pix/).
-
-This network architecture achieves such great results because the skip connetions allow higher frequency information, such as edges and gradients, to be easily communicated between the encoder and decoder. This is useful for image to image translation as typically we are translating between 'styles' (low frequency content such as palette, textures), while the high frequency content maps to the 'content' (see [style transfer](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Gatys_Image_Style_Transfer_CVPR_2016_paper.pdf)).
-
-<!-- TODO image of unet -->
+[Ladder nets](https://arxiv.org/abs/1507.02672) (aka [Unets](https://arxiv.org/abs/1505.04597)) are currently achieving state-of-the art results on image to image translation, for example [see here](https://phillipi.github.io/pix2pix/). This network architecture achieves such great results because the skip connetions allow higher frequency information, such as edges and gradients, to be easily communicated between the encoder and decoder. This is useful for image to image translation as typically we are translating between 'styles' (low frequency content such as palette, textures), while the high frequency content maps to the 'content' (see [style transfer](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Gatys_Image_Style_Transfer_CVPR_2016_paper.pdf)). $\textbf{Q:}$ How can we use this architecutre for unsupervised learning?
 
 ## An autoencoder with skips
 
@@ -19,7 +15,7 @@ $\textbf{Q:}$ How can we force the network to use the deeper layers? How can we 
 
 ### Filter the frequency content
 
-What if we enforced constrains on the skip connections to ensure the earlier skip connections can not communicate low freqency information? Lets construct a high and low pass filter and ...
+What if we enforced constrains on the skip connections to ensure the earlier skip connections can not communicate low freqency information? A high and low pass filter.
 
 $$
 \begin{align}
@@ -29,18 +25,25 @@ z_{high} &= x - z_{low}\\
 $$
 
 
-<div id="filter-net-example">
-  <!-- todo need to organise these. preferablly in the shape of a ladder net... -->
-  <img height="224" width="224" id="img" src="../images/starry-night.jpg"/>
+<div id="filter-net-layer0">
+    <img height="224" width="224" id="img" src="../images/starry-night.jpg"/>
+</div>
+<div id="filter-net-layer1">
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.11.2"></script>
 <script type="text/javascript">
+  // supposedly can use https://github.com/envygeeks/jekyll-assets/blob/master/README.md
+  // to move js into assets folder.
+
+  const [width, height] = [224, 224];
+
   function draw(image, div, name) {
+    // stolen from tfjs mnist example
+
     const canvas = document.createElement('canvas');
     canvas.className = name;
 
-    const [width, height] = [224, 224];
     canvas.width = width;
     canvas.height = height;
     const ctx = canvas.getContext('2d');
@@ -62,27 +65,40 @@ $$
   }
 
   function low_pass_filter(img){
-    pool = tf.layers.averagePooling2d({"poolSize": [2,2],
-                                       "strides": [2,2],
+    pool = tf.layers.averagePooling2d({"poolSize": [4,4],
+                                       "strides": [4,4],
                                        "padding": "same",
                                        "dataFormat": "channelsLast"});
-    low = pool.apply(img.reshape([1,224,224,3]));
-    return tf.image.resizeBilinear(low, [224, 224]);
+    low = pool.apply(img.reshape([1, width, height, 3]));
+    return tf.image.resizeBilinear(low, [width, height]);
   }
 
   function main(){
-    const div = document.getElementById('filter-net-example');
+    const div0 = document.getElementById('filter-net-layer0');
+    const div1 = document.getElementById('filter-net-layer1');
+
 
     const imgElement = document.getElementById('img');
     const img = tf.fromPixels(imgElement).toFloat();
-    // sometimes this fails to load. need to make it async?
+    // sometimes this fails to load (?). need to make it async?!?
 
     const low = low_pass_filter(img);
     const high = tf.sub(img, low);
 
-    draw(high, div, 'high');
-    draw(low, div, 'low');
-    // why isnt low rendering? it must be define as it is used to make high...
+    // not sure wtf is happening here. `other` renders, `low` doesnt so...
+    const other = tf.add(img, high)
+
+    //draw(low, div, 'low');
+    draw(other, div0, 'low');
+    draw(high, div0, 'high');
+
+    // const low1 = low_pass_filter(other);
+    // const high1 = tf.sub(other, low1);
+
+    // draw(tf.ones([width, height, 3]), div1, 'ones');
+    // draw(low1, div1, 'low1');
+    // draw(high1, div1, 'high1');
+
   }
 </script>
 <script>main();</script>
@@ -90,15 +106,20 @@ $$
 
 ### Structured latent space
 
-structure on the hidden space. Where earlier skips carry high frequency content and later skips would carry low frequency content.
-(allowing you to have distinct priors on each one?)
+<side>allowing you to have distinct priors on each one?</side>
+Now our hidden space is structured. Earlier skips carry high frequency content and later skips carry low frequency content.
 
-TODO image of hidden space decomposition.
+<img src="../images/ladder-net.png">
+
+### 'High' level content
+
+What do we mean when we talk about high level content? Familiar definitions include invariance to transforms, or generality, or absractness. But this can also be viewed as low frequency content (invariant to averaging under time shifts ??).
+
+Thus we hope to capture the high level content, a function of its parts, ...
 
 ### Wavelet decomposition
 
 Relationship to a wavelet decomposition...
-
 
 ## Results
 
