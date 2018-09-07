@@ -7,15 +7,15 @@ title: Unsupervised skip connections
 
 This network architecture achieves such great results because the skip connetions allow higher frequency information, such as edges and gradients, to be easily communicated between the encoder and decoder. This is useful for image to image translation as typically we are translating between 'styles' (low frequency content such as palette, textures), while the high frequency content maps to the 'content' (see [style transfer](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Gatys_Image_Style_Transfer_CVPR_2016_paper.pdf)).
 
-TODO image of unet
+<!-- TODO image of unet -->
 
 ## An autoencoder with skips
 
-Given this architectures power for image processing, it would be nice to use in unsupervised setting as well. However, naive implementation of an autoencoder with these skip connections is just cheating...
+Given this architectures power for image processing, it would be nice to use in unsupervised setting as well. However, naive implementation of an autoencoder with these skip connections is just cheating... The skip connections allow information to be skipped straight to the output, making reconstruction rather easy.
 
-TODO show example of pathology. Deeper layers dont need to learn anything...
+<!-- TODO show example of pathology. Deeper layers dont need to learn anything... -->
 
-__Q__ How can we force the network to use the deeper layers?
+$\textbf{Q:}$ How can we force the network to use the deeper layers? How can we constrain the capacity of the skip connections?
 
 ### Filter the frequency content
 
@@ -28,34 +28,65 @@ z_{high} &= x - z_{low}\\
 \end{align}
 $$
 
-TODO examples of the high/low freq content. (could make a live version?!)
 
 <div id="filter-net-example">
-  // todo need to organise these. preferablly in the shape of a ladder net...
-  <img height="224" width="224" id="cat" src="https://lh3.ggpht.com/IrU3-A_BtS3alAiaLMzIeDQrNUiPy7poxngSaD8drq9gEr5W3vbD6HZaqEaE69-pDqE=w300"/>
-  <img height="224" width="224" id="cat_low"/>
-  <img height="224" width="224" id="cat_high"/>
+  <!-- todo need to organise these. preferablly in the shape of a ladder net... -->
+  <img height="224" width="224" id="img" src="../images/starry-night.jpg"/>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.11.2"></script>
 <script type="text/javascript">
+  function draw(image, div, name) {
+    const canvas = document.createElement('canvas');
+    canvas.className = name;
+
+    const [width, height] = [224, 224];
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    const imageData = new ImageData(width, height);
+    const data = image.dataSync();
+
+    for (let i = 0; i < height * width; ++i) {
+      const j = i * 4;
+      const k = i * 3;
+      imageData.data[j + 0] = data[k + 0] * 255;
+      imageData.data[j + 1] = data[k + 1] * 255;
+      imageData.data[j + 2] = data[k + 2] * 255;
+      imageData.data[j + 3] = 255;
+    }
+    imageData.data = data;
+    ctx.putImageData(imageData, 0, 0);
+
+    div.appendChild(canvas);
+  }
+
   function low_pass_filter(img){
     pool = tf.layers.averagePooling2d({"poolSize": [2,2],
                                        "strides": [2,2],
                                        "padding": "same",
                                        "dataFormat": "channelsLast"});
-    return pool.apply(img.reshape([1,224,224,3]));
+    low = pool.apply(img.reshape([1,224,224,3]));
+    return tf.image.resizeBilinear(low, [224, 224]);
   }
 
-  const catElement = document.getElementById('cat');
-  const img = tf.fromPixels(catElement).toFloat();
+  function main(){
+    const div = document.getElementById('filter-net-example');
 
-  low = low_pass_filter(img);
-  high = img - low;
+    const imgElement = document.getElementById('img');
+    const img = tf.fromPixels(imgElement).toFloat();
+    // sometimes this fails to load. need to make it async?
 
-  const lowElement = document.getElementById('cat_low');
-  // set lowElement pixels with low
+    const low = low_pass_filter(img);
+    const high = tf.sub(img, low);
+
+    draw(high, div, 'high');
+    draw(low, div, 'low');
+    // why isnt low rendering? it must be define as it is used to make high...
+  }
 </script>
+<script>main();</script>
+
 
 ### Structured latent space
 
