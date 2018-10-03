@@ -121,28 +121,41 @@ But RIP is (how much if at all!?!?) weaker than requiring an orthogonality.
 
 > This property essentially requires that every set of columns with cardinality less than S approximately behaves like an orthonormal system
 
+I see how it requires every set of columns with cardinality less that S approximately behaves like a normal system, but not orthonormal.
+
+
 $$
 \begin{align}
-(1-\delta_S)\parallel y[T] \parallel_2^2 &\le \parallel A[T]y[T] \parallel_2^2 \le (1+\delta_S)\parallel y[T] \parallel^2_2 \\
-\forall T &\subseteq \{1, \dots n\} \;\; \text{s.t.} \;\; \mid T \mid = S \\
+(1-\delta_S)\parallel y_T \parallel_2^2 \;\; &\le \;\;\parallel A_{:, T}y_T \parallel_2^2 \;\; \le \;\; (1+\delta_S)\parallel y_T \parallel^2_2 \\
+\forall T &\subseteq \{1, \dots n\} \;\; \text{s.t.} \;\; \mid T \mid \; = S \\
 \end{align}
 $$
 
+Questions;
 
+- why forall T?
+- what value of y is used?
+- ?
 
 ***
+
 >  There are no known large matrices with bounded restricted isometry constants (computing these constants is strongly NP-hard,3 and is hard to approximate as well 4)  - https://en.wikipedia.org/wiki/Restricted_isometry_property
 
 ## Stable recovery from incomplete and noisy measurements
+
+> How can we possibly hope to recover our signal when not only the available information is severely incomplete but in addition, the few available observations are also inaccurate?
+
+>  To be broadly applicable, our recovery procedure must be stable: small changes in the observations should result in small changes in the recovery.
 
 __Theorem 1.__ (from [2](#2))
 
 Let $S$ be such that $\delta_{3S} + 3\delta_{4S} < 2$. Then for any signal $x_0$ suported on $T_0$ with $\mid T_0 \mid \le S$ and any pertubation $e$ with $\parallel e \parallel_2 \le \epsilon$, the solution $\hat x$ to ($P_2$) obeys
 
 $$
-\parallel \hat x - x_0 \parallel_2 \le C \cdot \epsilon \\
+\parallel \hat x - x_0 \parallel_2 \le C_S \cdot \epsilon \\
 $$
 
+__Q__ what is C? how does it depend on S?
 
 Note:
 
@@ -150,11 +163,16 @@ Note:
 * Where does $\delta_{3S} + 3\delta_{4S} < 2$ come from, seems rather weird!?
 *
 
-> he fact that the severely ill-posed matrix inversion keeps the perturbation from “blowing
-up” is rather remarkable and perhaps unexpected
+> The fact that the severely ill-posed matrix inversion keeps the perturbation from “blowing up” is rather remarkable and perhaps unexpected
 
-> no recovery method can perform fundamentally better for arbitrary perturbations
-of size $\epsilon$
+<aside>
+Why is the inversion of a rectangular matrix (and/or low rank) sensitive to pertubations?
+
+...?!?
+</aside>
+
+> no recovery method can perform fundamentally better for arbitrary perturbations of size $\epsilon$ ... obtaining a
+reconstruction with an error term whose size is guaranteed to be proportional to the noise level is the best one can hope for.
 
 
 
@@ -180,6 +198,10 @@ $$
 Neither can be solved by gaussian elimination (or other methods -- which are!?!?) because they are ...?
 
 * Is there a way to incorporate beliefs about noise the data to ML?
+
+***
+
+> We note that the factorized parameterization also plays an i mportant role here.  The intuition above would still apply if we replace U U ⊤ with a single variable X and run gradient descent in the space of X with small enough initialization.  However, it will converg e to a solution that doesn’t generalize.  The discrepancy comes from another crucial property of the factorized parameterization:  it provides certain denoising effect that encourages th e empirical gradient to have a smaller eigenvalue tail.
 
 ## References
 

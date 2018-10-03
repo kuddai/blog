@@ -130,6 +130,14 @@ img {
 
 // My utilities
 
+
+aside {
+  float:none;
+  font: 14px/1.4 $helvetica;
+  background: $lightblue;
+  outline: 2px solid $lightGray;
+}
+
 .center-image {
     margin: 0 auto;
     display: block;
