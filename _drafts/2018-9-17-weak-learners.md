@@ -13,6 +13,20 @@ yet i might have a peice of info that non-linearly effects the price? thus this 
 
 surely a market that actually shared the private information would have more accurate estimates of the price? (but little infentive/maybe people will lie...?)
 
+***
+
+The price, $p$, on the market is determined by $f, g$'s etimate of the value of $x$, given private information.
+
+$$
+\begin{align}
+p &= f(x, i_f) \circ g(x, i_g) \\
+&\ne h(x, i_f, i_g) \\
+\end{align}
+$$
+
+How do different valuations combine on the market? Additively? If so then $\circ = +$ and we have $f(x, i_f) + g(x, i_g)$. But I can easily imagine situations where knowing $i_f$ and $i_g$ could non-linearly alter my valuation.
+
+So is the market really able to integrate the information!?
 
 ## Resources
 
